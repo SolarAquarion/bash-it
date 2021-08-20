@@ -1,7 +1,10 @@
-# Bash-it
+![logo](https://github.com/Bash-it/media/raw/master/media/Bash-it.png)
+
 ![Build Status](https://github.com/Bash-it/bash-it/workflows/CI/badge.svg?branch=master)
 ![Docs Status](https://readthedocs.org/projects/bash-it/badge/)
-[![Join the chat at https://webchat.freenode.net/?channel=#bash-it](https://img.shields.io/badge/chat-on%20freenode-brightgreen.svg)](https://webchat.freenode.net/?channel=#bash-it)
+![License](https://img.shields.io/github/license/Bash-it/bash-it)
+![shell](https://img.shields.io/badge/Shell-Bash-blue)
+[![Join the chat at https://web.libera.chat/?channel=#bash-it](https://img.shields.io/badge/chat-on%20Libera.Chat-brightgreen.svg)](https://web.libera.chat/?channel=#bash-it)
 
 **Bash-it** is a collection of community Bash commands and scripts for Bash 3.2+.
 (And a shameless ripoff of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) :smiley:)
@@ -9,7 +12,7 @@
 Includes autocompletion, themes, aliases, custom functions, a few stolen pieces from Steve Losh, and more.
 
 Bash-it provides a solid framework for using, developing and maintaining shell scripts and custom commands for your daily work.
-If you're using the _Bourne Again Shell_ (Bash) regularly and have been looking for an easy way on how to keep all of these nice little scripts and aliases under control, then Bash-it is for you!
+If you're using the _Bourne Again Shell_ (Bash) regularly and have been looking for an easy way on how to keep all of these nice little scripts and aliases under control, then Bash-it is for you!  
 Stop polluting your `~/bin` directory and your `.bashrc` file, fork/clone Bash-it and start hacking away.
 
 - [Main Page](https://bash-it.readthedocs.io/en/latest)
@@ -39,7 +42,8 @@ Stop polluting your `~/bin` directory and your `.bashrc` file, fork/clone Bash-i
    ``git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it``
 2) Run ``~/.bash_it/install.sh``
 
-Thats it! :smiley:  
+That's it! :smiley:  
+
 You can check out more components of Bash-it, and customize it to your desire.  
 For more information, see detailed instructions [here](https://bash-it.readthedocs.io/en/latest/installation/).
 
@@ -53,6 +57,8 @@ please feel free to read through this page if you're interested in how Bash-it l
 
 ## Contributors
 
-* [List of contributors][contribute]
+[List of contributors](https://github.com/Bash-it/bash-it/contributors)
 
-[contribute]: https://github.com/Bash-it/bash-it/contributors
+## License
+
+Bash-it is licensed under the [MIT License](https://github.com/Bash-it/bash-it/blob/master/LICENSE).

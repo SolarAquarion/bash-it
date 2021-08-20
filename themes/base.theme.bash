@@ -121,6 +121,18 @@ function scm {
 	fi
 }
 
+scm_prompt() {
+	local CHAR=$(scm_char)
+	local format=${SCM_PROMPT_FORMAT:-'[%s%s]'}
+
+	if [[ $CHAR = "$SCM_NONE_CHAR" ]]; then
+		return
+	else
+		# shellcheck disable=2059
+		printf "$format\n" "$CHAR" "$(scm_prompt_info)"
+	fi
+}
+
 function scm_prompt_char {
 	if [[ -z $SCM ]]; then scm; fi
 	if [[ $SCM == "$SCM_GIT" ]]; then
@@ -185,6 +197,12 @@ function terraform_workspace_prompt {
 		if [ -d .terraform ]; then
 			echo -e "$(terraform workspace show 2> /dev/null)"
 		fi
+	fi
+}
+
+function active_gcloud_account_prompt {
+	if _command_exists gcloud; then
+		echo -e "$(gcloud config list account --format "value(core.account)" 2> /dev/null)"
 	fi
 }
 
@@ -353,7 +371,9 @@ function hg_prompt_vars {
 
 	if [ -f "$HG_ROOT/branch" ]; then
 		# Mercurial holds it's current branch in .hg/branch file
-		SCM_BRANCH=$(cat "$HG_ROOT/branch")
+		SCM_BRANCH=$(< "${HG_ROOT}/branch")
+		local bookmark=${HG_ROOT}/bookmarks.current
+		[[ -f ${bookmark} ]] && SCM_BRANCH+=:$(< "${bookmark}")
 	else
 		SCM_BRANCH=$(hg summary 2> /dev/null | grep branch: | awk '{print $2}')
 	fi
@@ -427,6 +447,10 @@ function ruby_version_prompt {
 
 function k8s_context_prompt {
 	echo -e "$(kubectl config current-context 2> /dev/null)"
+}
+
+function k8s_namespace_prompt {
+	echo -e "$(kubectl config view --minify --output 'jsonpath={..namespace}' 2> /dev/null)"
 }
 
 function virtualenv_prompt {

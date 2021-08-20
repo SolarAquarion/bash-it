@@ -49,6 +49,13 @@ function __powerline_terraform_prompt() {
 	fi
 }
 
+function __powerline_gcloud_prompt() {
+	local active_gcloud_account=""
+
+	active_gcloud_account="$(active_gcloud_account_prompt)"
+	[[ -n "${active_gcloud_account}" ]] && echo "${GCLOUD_CHAR}${active_gcloud_account}|${GCLOUD_THEME_PROMPT_COLOR}"
+}
+
 function __powerline_node_prompt() {
 	local node_version=""
 
@@ -76,6 +83,16 @@ function __powerline_k8s_context_prompt() {
 	fi
 
 	[[ -n "${kubernetes_context}" ]] && echo "${KUBERNETES_CONTEXT_THEME_CHAR}${kubernetes_context}|${KUBERNETES_CONTEXT_THEME_PROMPT_COLOR}"
+}
+
+function __powerline_k8s_namespace_prompt() {
+	local kubernetes_namespace=""
+
+	if _command_exists kubectl; then
+		kubernetes_namespace="$(k8s_namespace_prompt)"
+	fi
+
+	[[ -n "${kubernetes_namespace}" ]] && echo "${KUBERNETES_NAMESPACE_THEME_CHAR}${kubernetes_namespace}|${KUBERNETES_NAMESPACE_THEME_PROMPT_COLOR}"
 }
 
 function __powerline_python_venv_prompt() {
@@ -201,6 +218,11 @@ function __powerline_history_number_prompt() {
 
 function __powerline_command_number_prompt() {
 	echo "${COMMAND_NUMBER_THEME_PROMPT_CHAR}\#|${COMMAND_NUMBER_THEME_PROMPT_COLOR}"
+}
+
+function __powerline_duration_prompt() {
+	local duration=$(_command_duration)
+	[[ -n "$duration" ]] && echo "${duration}|${COMMAND_DURATION_PROMPT_COLOR}"
 }
 
 function __powerline_left_segment() {
